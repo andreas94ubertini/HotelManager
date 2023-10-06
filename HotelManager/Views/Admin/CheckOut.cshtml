@@ -23,7 +23,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Start)
+            @Model.Start.ToShortDateString()
         </dd>
 
         <dt>
@@ -31,7 +31,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EndRes)
+            @Model.EndRes.ToShortDateString()
         </dd>
 
         <dt>
@@ -39,7 +39,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Deposit)
+            @Html.DisplayFor(model => model.Deposit) Eur
         </dd>
 
         <dt>
@@ -47,7 +47,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Price)
+            @Model.GetTotalToPay() Eur
         </dd>
 
         <dt>
@@ -72,14 +72,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Type)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IdOpts)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdOpts)
         </dd>
 
         <dt>
@@ -124,6 +116,6 @@
 
     </dl>
     <p>Servizi Aggiuntivi Tot: @Model.GetTotalServices() Eur</p>
-    <p>Servizi Aggiuntivi Tot: @Model.GetTotalToPay() </p>
+    <p>Totale con servizi meno caparra: @(Model.GetTotalToPay()+ Model.GetTotalServices()-Model.Deposit) Eur</p>
 </div>
 

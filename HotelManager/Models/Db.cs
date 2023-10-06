@@ -519,6 +519,22 @@ namespace HotelManager.Models
             }
             return null;
         }
+        public static void SetResPrice(double Price, int id)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringDB"].ConnectionString.ToString();
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "update Reservations SET Price=@Price where IdReservation=@id";
+            cmd.Parameters.AddWithValue("Price", Price);
+            cmd.Parameters.AddWithValue("Id", id);
+            conn.Open();
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
 
     }
 }

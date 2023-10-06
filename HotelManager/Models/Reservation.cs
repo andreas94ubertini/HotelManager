@@ -19,7 +19,6 @@ namespace HotelManager.Models
         [Required(ErrorMessage = "Campo obbligatorio")]
         [Display(Name = "Caparra")]
         public double Deposit { get; set; }
-        [Required(ErrorMessage = "Campo obbligatorio")]
         [Display(Name = "Prezzo")]
         public double Price { get; set; }
         [Required(ErrorMessage = "Campo obbligatorio")]

@@ -11,6 +11,7 @@ namespace HotelManager.Controllers
     public class AdminController : Controller
     {
 
+
         // GET: Admin
         [HttpGet]
         public ActionResult NewCustomer()
@@ -134,7 +135,7 @@ namespace HotelManager.Controllers
             ViewBag.Listrooms = listRooms;
             ViewBag.ListCustomer = listCustomer;
             DateTime ResDate = DateTime.Now;
-            Db.MakeReservation(ResDate, r.Start, r.EndRes, r.Deposit, r.Price, r.Details, r.IdCustomer, r.IdRooms);
+            Db.MakeReservation(ResDate, r.Start, r.EndRes, r.Deposit, 0, r.Details, r.IdCustomer, r.IdRooms);
             return RedirectToAction("AddServices");
         }
         [HttpGet]
@@ -154,11 +155,14 @@ namespace HotelManager.Controllers
         {
             int id = Convert.ToInt32(TempData["IdReservation"]);
             CheckOut c = Db.GetCheckOutInfo(id);
+            Db.SetResPrice(c.GetTotalToPay(), id);
             return View(c);
         }
         public ActionResult DetailsReservation(int id)
         {
+            
             CheckOut c = Db.GetCheckOutInfo(id);
+            Db.SetResPrice(c.GetTotalToPay(),id);
             return View(c);
         }
         public ActionResult QueryArea()

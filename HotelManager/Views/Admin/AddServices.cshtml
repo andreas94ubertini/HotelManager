@@ -4,7 +4,7 @@
     ViewBag.Title = "AddServices";
 }
 
-<h2>AddServices</h2>
+<h2>Aggiungi Servizi</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Services</h4>
+        <h4>I servizi sono calcolati per l'intera durata del soggiorno, costo 5Eur cad.</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -75,9 +75,6 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
