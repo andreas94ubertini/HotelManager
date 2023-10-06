@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "QueryArea";
+}
+
+<h2>QueryArea</h2>
+
+<h3>Ricerca prenotazione per Cf</h3>
+<input type="text" id="CfCliente" />
+<input type="button" id="btnCerca" class="btn btn-success rounded-pill" value="Cerca" />
+<input type="button" class="btn btn-success rounded-pill" id="btnGroup" value="Pensione Completa" />
+
+<div class="risultatoRicerca">
+    <ul id="list"></ul>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            console.log("ciao")
+            $("#btnCerca").click(function () {
+                var Cf = $("#CfCliente").val();
+                $.ajax({
+                    method: 'POST',
+                    url: 'GetReservationByCf',
+                    data: { Cf: Cf },
+                    success: function (data) {
+                        $("#list").empty();
+                        console.log(data)
+                        $.each(data, function (i, q) {
+                            var licurrent = "<li>" +
+                                "Id Prenotazione" + q.IdReservation + "<br>" +
+                                "Nome e cognome cliente: " + q.Name + q.Surname + "<br>" +
+                                "Cf: " + q.Cf + "<br>" +
+                                "</li>";
+                            $("#list").append(licurrent);
+                        });
+                    }
+                })
+
+            })
+            $("#btnGroup").click(function () {
+                $("#list").empty();
+                console.log("ciaociao")
+                $.ajax({
+                    method: 'GET',
+                    url: "GetPensioneCompleta",
+                    success: function (list) {
+                        let tot = 0
+                        $.each(list, function (i, v) {
+                          tot++
+                        })
+                        var li = "<li> Totale trattamento pensione compelta: " + tot + "</li>";
+                        $("#list").append(li);
+                    }
+                })
+            })
+        })
+    </script>
+}
+

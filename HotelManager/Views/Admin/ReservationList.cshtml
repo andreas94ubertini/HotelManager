@@ -1,0 +1,70 @@
+﻿@model IEnumerable<HotelManager.Models.Reservation>
+
+@{
+    ViewBag.Title = "ReservationList";
+}
+<a href="/Admin/MakeReservation" class="btn btn-success rounded-pill">Aggiungi Prenotazione</a>
+
+<div class="mt-3 p-5">
+
+    <table class="table table-light shadow">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdReservation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Start)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndRes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Deposit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+            <th>
+                Azioni
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdReservation)
+                </td>
+                <td>
+                    @item.ResDate.ToShortDateString()
+                </td>
+                <td>
+                    @item.Start.ToShortDateString()
+                </td>
+                <td>
+                    @item.EndRes.ToShortDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Deposit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    <a href="/Admin/ModifyReservation/@item.IdReservation" class="btn btn-success rounded-pill">Modifica</a>
+                    <a href="/Admin/DetailsReservation/@item.IdReservation" class="btn btn-primary rounded-pill">Dettagli</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

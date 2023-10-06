@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Applicazione ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .page-header {
+            background: url(https://easetemplate.com/free-website-templates/hike/images/pageheader.jpg)no-repeat;
+            position: relative;
+            background-size: cover;
+        }
+
+        .page-caption {
+            padding-top: 170px;
+            padding-bottom: 174px;
+        }
+
+        .page-title {
+            font-size: 46px;
+            line-height: 1;
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .card-section {
+            position: relative;
+            bottom: 60px;
+        }
+
+        .card-block {
+            padding: 80px;
+        }
+
+        .section-title {
+            margin-bottom: 60px;
+        }
+
+        body {
+            background-color: lightgrey;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light navbar-light fs-5">
+        <div class="container">
+            <a class="navbar-brand" href="/Home/Index">
+                <img id="MDB-logo"
+                     src="~/Content/img/Hotel.png"
+                     alt="MDB Logo"
+                     draggable="false"
+                     height="90" />
+            </a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link mx-2" href="/Admin/CustomerList">Gestisci Clienti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2" href="/Admin/ReservationList">Gestisci Prenotazioni</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2" href="/Admin/QueryArea">Query Area</a>
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item ms-3">
+                            <a class="btn btn-danger rounded-pill" href="/Home/LogOut">Log-Out</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item ms-3">
+                            <a class="btn btn-success rounded-pill" href="/Home/LogIn">Log-In</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

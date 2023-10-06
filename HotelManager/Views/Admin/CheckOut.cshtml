@@ -1,0 +1,129 @@
+﻿@model HotelManager.Models.CheckOut
+
+@{
+    ViewBag.Title = "CheckOut";
+}
+
+<h2>CheckOut</h2>
+
+<div>
+    <h4>CheckOut</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdReservation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdReservation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Start)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Start)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndRes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndRes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deposit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deposit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdOpts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdOpts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomBr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomBr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MiniBar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MiniBar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Internet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Internet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddBed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddBed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cradle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cradle)
+        </dd>
+
+    </dl>
+    <p>Servizi Aggiuntivi Tot: @Model.GetTotalServices() Eur</p>
+    <p>Servizi Aggiuntivi Tot: @Model.GetTotalToPay() </p>
+</div>
+
